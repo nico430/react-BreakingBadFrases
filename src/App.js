@@ -1,5 +1,6 @@
-import React from 'react';
+import React , {useState} from 'react';
 import styled from '../node_modules/@emotion/styled';
+import Frase from './components/Frase'
 
 const Contenedor = styled.div`
   display: flex;
@@ -22,18 +23,27 @@ const Boton = styled.button`
 
 function App() {
 
+  //state de la frase
+  const [frase, guardarFrase] = useState({});
+
   const consultarAPI = async () => {
     const api = await fetch('http://breaking-bad-quotes.herokuapp.com/v1/quotes'); 
     //fetch es una funcion de javascript que trae los datos de una api y se le pasa la url
     //fetch funciona con promises y se le tiene que aplicar el .then
     const frase = await api.json()
 
-      console.log(frase[0])
+    //devolucion de la frase al state para uso global
+    guardarFrase(frase[0]);
 
   }
 
   return (
     <Contenedor>
+
+      <Frase 
+        frase={frase}
+      />
+
       <Boton
         onClick={consultarAPI}
       >
