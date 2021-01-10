@@ -5,8 +5,9 @@ const Contenedor = styled.div `
 
 padding: 3rem;
 border-radius: .5rem;
-background-color: #fff;
+background-color: rgba(10,10,10, 0.5);
 max-width: 800px;
+color:white;
 
 @media(min-width: 992px){
     margin-top: 10rem;

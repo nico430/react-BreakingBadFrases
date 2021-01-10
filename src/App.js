@@ -1,4 +1,4 @@
-import React , {useState} from 'react';
+import React , {useState ,useEffect} from 'react';
 import styled from '../node_modules/@emotion/styled';
 import Frase from './components/Frase'
 
@@ -18,7 +18,12 @@ const Boton = styled.button`
   padding: 1rem 3rem;
   font-size: 2rem;
   border: 2px solid black;
-  cursor: pointer;
+  transition: background-size .8s ease;
+  
+  :hover {
+    cursor: pointer;
+    background-size: 500px;
+  }
 `;
 
 function App() {
@@ -36,6 +41,11 @@ function App() {
     guardarFrase(frase[0]);
 
   }
+
+    //useffect para que cargue la frase al inicio o carga de la página
+    useEffect( () => { 
+        consultarAPI();
+     }, [] )
 
   return (
     <Contenedor>
